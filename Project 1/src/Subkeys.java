@@ -24,13 +24,39 @@ public class Subkeys {
                 binaryChar.insert(0,'0');
             }
             binary.append(binaryChar);
-            System.out.println(binary);
         }
         return binary.toString();
     }
 
     public static String[] split(String k) {
-        
+        String binaryString = binaryConvertion(k);
+        String[] newString = new String[2];
+        char[] kCharArray = binaryString.toCharArray();
+        String c = "";
+        String d = "";
+        int midIndex = k.length()/2;
+
+        for (int i=0; i<midIndex; i++) {
+            c += kCharArray[i];
+        }
+        for (int i=midIndex; i< kCharArray.length;i++) {
+            d += kCharArray[i];
+        }
+        newString[0] = c;
+        newString[1] = d;
+        return newString;
+    }
+
+    public static String[] transFuction(String binaryString) {
+        String[] half = split(binaryString);
+        String c = half[0];
+        String d = half[1];
+        char temp1 = c.charAt(0);
+        char temp2 = d.charAt(0);
+        String cShifted = c.substring(1) + temp1;
+        String dShifted = d.substring(1) + temp2;
+
+        return new String[]{cShifted, dShifted};
     }
 
     public static void main(String[] args) {
@@ -46,7 +72,12 @@ public class Subkeys {
             }
         } while (k.length() != 7);
         scanner.close();
-        String ans = binaryConvertion(k);
-        System.out.println(ans.length());
+
+//        System.out.println(transFuction(k));
+
+        String binaryString = "12345678";
+        String[] result = transFuction(binaryString);
+        System.out.println("First half after shift: " + result[0]);
+        System.out.println("Second half after shift: " + result[1]);
     }
 }
