@@ -75,18 +75,33 @@ public class Subkeys {
             }
         } while (k.length() != 7);
         scanner.close();
-
+//
         String binaryString = binaryConvertion(k);
-        String[] result = transFuction(binaryString);
+        String[] half = split(binaryString);
+        String C = half[0];
+        String D = half[1];
+//        String key = result[0] + result[1];
 //        System.out.println("First half after shift: " + result[0]);
 //        System.out.println("Second half after shift: " + result[1]);
-        String key = result[0] + result[1];
 //        System.out.println(key);
 
-        String newKey = "";
-        for (int i=0; i<32; i++) {
-            newKey += key.charAt(i);
+        for (int i = 1; i<11; i++) {
+//            String newKey = "";
+            String[] shiftedHalves = transFuction(C + D);
+            C = shiftedHalves[0];
+            D = shiftedHalves[1];
+
+            String newKey = (C+D).substring(0,32);
+            System.out.println("Subkey k" + i + ": " + newKey);
+
+
+//            for (int j=0; j<32; j++) {
+//                newKey += key.charAt(j);
+//                binaryString = binaryConvertion(newKey);
+//                result = transFuction(binaryString);
+//                key = result[0] + result[1];
+//            }
+//            System.out.println("Subkey k" + i + ": " + newKey);
         }
-        System.out.println(newKey);
     }
 }
