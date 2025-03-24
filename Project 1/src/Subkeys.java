@@ -2,10 +2,35 @@ import java.util.*;
 
 public class Subkeys {
 
+//    public static String binaryConvertion(String k) {
+//        StringBuilder binary = new StringBuilder();
+//        for (char ch : k.toCharArray()) {
+//            binary.append(String.format("%8s", Integer.toBinaryString(ch)).replace(' ', '0'));
+//        }
+//        return binary.toString();
+//    }
+
     public static String binaryConvertion(String k) {
+        int n = k.length();
+        char[] kchar = k.toCharArray();
         StringBuilder binary = new StringBuilder();
-        for (char ch : k.toCharArray()) {
-            binary.append(String.format("%8s", Integer.toBinaryString(ch)).replace(' ', '0'));
+        for (int i=0; i<n; i++){
+            char ch = kchar[i];
+            int val = (int) ch;
+            StringBuilder binaryChar = new StringBuilder();
+
+            while (val > 0) {
+                if (val % 2 == 0) {
+                    binaryChar.insert(0,'0');
+                } else {
+                    binaryChar.insert(0, '1');
+                }
+                val = val/2;
+            }
+            while (binaryChar.length()<8) {
+                binaryChar.insert(0,'0');
+            }
+            binary.append(binaryChar);
         }
         return binary.toString();
     }
@@ -26,12 +51,34 @@ public class Subkeys {
         return new String[] { cShifted, dShifted };
     }
 
-    public static List<String> keyScheduleTransform(String inputKey) {
+    public static Stack<String> keyScheduleTransform(String inputKey) {
         if (inputKey.length() != 56) {
             throw new IllegalArgumentException("Input key must be 56 bits long.");
         }
 
-        List<String> subkeys = new ArrayList<>();
+        Stack<String> subkeys = new Stack<>();
+        String[] halves = split(inputKey);
+        String C = halves[0];
+        String D = halves[1];
+
+        for (int i = 0; i < 10; i++) {
+            String[] shiftedHalves = transFuction(C + D);
+            C = shiftedHalves[0];
+            D = shiftedHalves[1];
+
+            String subkey = (C + D).substring(0, 32);
+            subkeys.add(subkey);
+        }
+
+        return subkeys;
+    }
+
+    public static Queue<String> keyTransform(String inputKey) {
+        if (inputKey.length() != 56) {
+            throw new IllegalArgumentException("Input key must be 56 bits long.");
+        }
+
+        Queue<String> subkeys = new LinkedList<>();
         String[] halves = split(inputKey);
         String C = halves[0];
         String D = halves[1];
