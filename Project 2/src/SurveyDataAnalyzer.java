@@ -3,7 +3,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class SurveyDataAnalyzer{
-    public int[] genderDistribution (CustomHashTable table) {
+    public static int[] genderDistribution (CustomHashTable table) {
         int[] ans = new int[4];
 
         for (int i = 0; i < table.size(); i++) {
