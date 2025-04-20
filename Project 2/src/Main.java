@@ -5,6 +5,6 @@ public class Main {
         CustomHashTable myTable = new CustomHashTable();
         myTable = ReadFile.readResponsesFromFile("src/responses.txt");
         myTable.printHT();
-        System.out.println(Arrays.toString(SurveyDataAnalyzer.genderDistribution(myTable)));
+//        System.out.println(Arrays.toString(SurveyDataAnalyzer.genderDistribution(myTable)));
     }
 }

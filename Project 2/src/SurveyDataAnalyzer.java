@@ -1,12 +1,10 @@
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class SurveyDataAnalyzer{
     public static int[] genderDistribution (CustomHashTable table) {
         int[] ans = new int[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 String gender = table.search(i).getGender();
                 switch(gender) {
@@ -21,10 +19,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public int[] ageGroupDistribution (CustomHashTable table) {
+    public static int[] ageGroupDistribution (CustomHashTable table) {
         int[] ans = new int[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int age = table.search(i).getAge();
                 ans[age-1]++;
@@ -34,10 +32,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public int[] residenceDistribution (CustomHashTable table) {
+    public static int[] residenceDistribution (CustomHashTable table) {
         int[] ans = new int[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int residence = table.search(i).getResidence();
                 ans[residence-1]++;
@@ -47,10 +45,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public int[] educationDistribution (CustomHashTable table) {
+    public static int[] educationDistribution (CustomHashTable table) {
         int[] ans = new int[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i)!= null) {
                 int education = table.search(i).getEducation();
                 ans[education-1]++;
@@ -60,10 +58,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public int[] incomeDistribution (CustomHashTable table) {
+    public static int[] incomeDistribution (CustomHashTable table) {
         int[] ans = new int[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int incomeSource = table.search(i).getIncomeSource();
                 ans[incomeSource-1]++;
@@ -73,10 +71,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public int[] maritalDistribution (CustomHashTable table) {
+    public static int[] maritalDistribution (CustomHashTable table) {
         int[] ans = new int[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int maritalStatus = table.search(i).getMaritalStatus();
                 ans[maritalStatus-1]++;
@@ -86,24 +84,24 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public int[] smokerDistribution (CustomHashTable table) {
+    public static int[] smokerDistribution (CustomHashTable table) {
         int[] ans = new int[2];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int smoker = table.search(i).getSmoker();
-                ans[smoker-1]++;
+                ans[1 - smoker]++;
             }
         }
 
         return ans;
     }
 
-    public double lifeQualityGeneral (CustomHashTable table) {
+    public static double lifeQualityGeneral (CustomHashTable table) {
         double sum = 0;
         int n = 0;
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 double quality = table.search(i).getQuality();
                 sum += quality;
@@ -114,10 +112,10 @@ public class SurveyDataAnalyzer{
         return sum/n;
     }
 
-    public double[] lifeQualityGenderBased (CustomHashTable table) {
+    public static double[] lifeQualityGenderBased (CustomHashTable table) {
         double[] ans = new double[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 String gender = table.search(i).getGender();
                 switch(gender) {
@@ -138,10 +136,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public double[] lifeQualityAgeBased (CustomHashTable table) {
+    public static double[] lifeQualityAgeBased (CustomHashTable table) {
         double[] ans = new double[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int age = table.search(i).getAge();
                 ans[age-1] += table.search(i).getQuality();
@@ -157,10 +155,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public double[] lifeQualityResidenceBased (CustomHashTable table) {
+    public static double[] lifeQualityResidenceBased (CustomHashTable table) {
         double[] ans = new double[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int residence = table.search(i).getResidence();
                 ans[residence-1] += table.search(i).getQuality();
@@ -176,10 +174,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public double[] lifeQualityEducationBased (CustomHashTable table) {
+    public static double[] lifeQualityEducationBased (CustomHashTable table) {
         double[] ans = new double[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int education = table.search(i).getEducation();
                 ans[education-1] += table.search(i).getQuality();
@@ -195,10 +193,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public double[] lifeQualityIncomeBased (CustomHashTable table) {
+    public static double[] lifeQualityIncomeBased (CustomHashTable table) {
         double[] ans = new double[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int incomeSource = table.search(i).getIncomeSource();
                 ans[incomeSource-1] += table.search(i).getQuality();
@@ -214,10 +212,10 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public double[] lifeQualityMaritalBased (CustomHashTable table) {
+    public static double[] lifeQualityMaritalBased (CustomHashTable table) {
         double[] ans = new double[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int maritalStatus = table.search(i).getMaritalStatus();
                 ans[maritalStatus-1] += table.search(i).getQuality();
@@ -233,13 +231,13 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public double[] lifeQualitySmokerBased (CustomHashTable table) {
+    public static double[] lifeQualitySmokerBased (CustomHashTable table) {
         double[] ans = new double[2];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int smoker = table.search(i).getSmoker();
-                ans[smoker-1] += table.search(i).getQuality();
+                ans[1 - smoker] += table.search(i).getQuality();
             }
         }
 
@@ -252,12 +250,12 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public String[] mostCommonTreatment (CustomHashTable table) {
+    public static String[] mostCommonTreatment (CustomHashTable table) {
         String[] ans = new String[5];
 
         int s = 0, c = 0, r = 0, i = 0, m = 0;
 
-        for (int j = 0; j < table.size(); j++) {
+        for (int j = 0; j <= table.size(); j++) {
             if (table.search(j) != null) {
                 String temp = table.search(j).getQ9();
                 for(int z = 0; z < temp.length(); z++) {
@@ -274,93 +272,100 @@ public class SurveyDataAnalyzer{
             }
         }
 
-        Map<String, Integer> map = new TreeMap<String, Integer>();
-
+        Map<String, Integer> map = new HashMap<>();
         map.put("Surgical", s);
         map.put("Chemotherapy", c);
         map.put("Radiotherapy", r);
         map.put("Immunotherapy", i);
-        map.put("Molecularly targeted therapy", m);
+        map.put("MolecularlyTargetedTherapy", m);
 
+        List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(map.entrySet());
+        sortedEntries.sort((a, b) -> b.getValue().compareTo(a.getValue()));
 
-        Iterator<String> iter = map.keySet().iterator();
-        int g = 4;
-
-        while(iter.hasNext()){
-            ans[g] = iter.next();
-            g--;
+        for (int j = 0; j < sortedEntries.size(); j++) {
+            ans[j] = sortedEntries.get(j).getKey();
         }
 
         return ans;
     }
 
-    public String[] mostCommonSymptoms (CustomHashTable table) {
+    public static String[] mostCommonSymptoms (CustomHashTable table) {
         String[] ans = new String[6];
 
         int[] count = new int[6];
 
-        for (int j = 0; j < table.size(); j++) {
+        for (int j = 0; j <= table.size(); j++) {
             if (table.search(j) != null) {
-                String temp = table.search(j).getQ9();
+                String temp = table.search(j).getQ16();
                 String[] symptoms = temp.split("[;]");
-                for(int i = 0; i < symptoms.length; i++){
-                    switch (symptoms[i]){
-                        case "Cough": count[0]++; break;
-                        case "Hoarseness": count[1]++; break;
-                        case "Coughing up blood": count[2]++; break;
-                        case "Chest pain": count[3]++; break;
-                        case "Shortness of breath": count[4]++; break;
-                        case "Weakness": count[5]++; break;
+                for (String symptom : symptoms) {
+                    switch (symptom) {
+                        case "Cough":
+                            count[0]++;
+                            break;
+                        case "Hoarseness":
+                            count[1]++;
+                            break;
+                        case "CoughingUpBlood":
+                            count[2]++;
+                            break;
+                        case "ChestPain":
+                            count[3]++;
+                            break;
+                        case "ShortnessOfBreath":
+                            count[4]++;
+                            break;
+                        case "Weakness":
+                            count[5]++;
+                            break;
                     }
                 }
             }
         }
 
-        Map<String, Integer> map = new TreeMap<String, Integer>();
+        Map<String, Integer> map = new HashMap<>();
 
         map.put("Cough", count[0]);
         map.put("Hoarseness", count[1]);
-        map.put("Coughing up blood", count[2]);
-        map.put("Chest pain", count[3]);
-        map.put("Shortness of breath", count[4]);
+        map.put("CoughingUpBlood", count[2]);
+        map.put("ChestPain", count[3]);
+        map.put("ShortnessOfBreath", count[4]);
         map.put("Weakness", count[5]);
 
+        List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(map.entrySet());
+        sortedEntries.sort((a, b) -> b.getValue().compareTo(a.getValue())); // sort by value descending
 
-        Iterator<String> iter = map.keySet().iterator();
-        int g = 5;
-
-        while(iter.hasNext()){
-            ans[g] = iter.next();
-            g--;
+        for (int j = 0; j < sortedEntries.size(); j++) {
+            ans[j] = sortedEntries.get(j).getKey();
         }
 
         return ans;
     }
 
-    public String[] mostCommonLifeAspects (CustomHashTable table) {
+    public static String[] mostCommonLifeAspects (CustomHashTable table) {
         String[] ans = new String[5];
 
         int[] count = new int[5];
 
-        for (int j = 0; j < table.size(); j++) {
+        for (int j = 0; j <= table.size(); j++) {
             if (table.search(j) != null) {
-                String temp = table.search(j).getQ9();
+                String temp = table.search(j).getQ23();
                 String[] aspects = temp.split("[;]");
-                for (String symptom : aspects) {
-                    switch (symptom) {
-                        case "Physical aspect":
+                for (String aspect : aspects) {
+                    switch (aspect) {
+                        case "PhysicalAspect":
                             count[0]++;
                             break;
-                        case "Psychological aspect":
+                        case "PsychologicalAspect":
                             count[1]++;
                             break;
-                        case "Professional life":
+                        case "ProfessionalLife":
                             count[2]++;
                             break;
-                        case "Family life":
+                        case "FamilyLife":
                             count[3]++;
                             break;
-                        case "Social life":
+                        case "SocialLife":
                             count[4]++;
                             break;
                     }
@@ -368,31 +373,29 @@ public class SurveyDataAnalyzer{
             }
         }
 
-        Map<String, Integer> map = new TreeMap<String, Integer>();
+        Map<String, Integer> map = new HashMap<>();
 
-        map.put("Physical aspect", count[0]);
-        map.put("Psychological aspect", count[1]);
-        map.put("Professional life", count[2]);
-        map.put("Family life", count[3]);
-        map.put("Social life", count[4]);
+        map.put("PhysicalAspect", count[0]);
+        map.put("PsychologicalAspect", count[1]);
+        map.put("ProfessionalLife", count[2]);
+        map.put("FamilyLife", count[3]);
+        map.put("SocialLife", count[4]);
 
+        List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(map.entrySet());
+        sortedEntries.sort((b, a) -> a.getValue().compareTo(b.getValue()));
 
-        Iterator<String> iter = map.keySet().iterator();
-        int g = 4;
-
-        while(iter.hasNext()){
-            ans[g] = iter.next();
-            g--;
+        for (int j = 0; j < sortedEntries.size(); j++) {
+            ans[j] = sortedEntries.get(j).getKey();
         }
 
         return ans;
     }
 
-    public double[] lifeQualityMixConditionsBased (CustomHashTable table) {
+    public static double[] lifeQualityMixConditionsBased (CustomHashTable table) {
         double[] ans = new double[2];
         int a = 0, b = 0;
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int maritalStatus = table.search(i).getMaritalStatus();
                 int residence = table.search(i).getResidence();
@@ -413,11 +416,11 @@ public class SurveyDataAnalyzer{
         return ans;
     }
 
-    public double[] lifeQualityResponseBased (CustomHashTable table) {
+    public static double[] lifeQualityResponseBased (CustomHashTable table) {
         double[] ans = new double[4];
         int[] count = new int[4];
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i <= table.size(); i++) {
             if (table.search(i) != null) {
                 int q15 = table.search(i).getQ15();
                 ans[q15-1] += table.search(i).getQuality();
