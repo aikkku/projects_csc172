@@ -82,6 +82,7 @@ public class CustomHashTable {
 
 
     }
+
     private static class Entry {
         private final int key;
         private Response value;
@@ -100,6 +101,7 @@ public class CustomHashTable {
 
     public static void main(String[] args) {
         CustomHashTable myTable = new CustomHashTable();
+
         myTable.printHT();
     }
 }
